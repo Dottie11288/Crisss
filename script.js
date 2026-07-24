@@ -1,22 +1,15 @@
-// =========================
+// =====================================
 // PARA CRISTINA ❤️
-// Parte 1
-// =========================
+// SCRIPT - PARTE 1
+// =====================================
 
 // ---------- Pantallas ----------
 
 const pages = document.querySelectorAll(".page");
 
 function showPage(id){
-
-    pages.forEach(page=>{
-
-        page.classList.remove("active");
-
-    });
-
+    pages.forEach(page=>page.classList.remove("active"));
     document.getElementById(id).classList.add("active");
-
 }
 
 // ---------- Botón comenzar ----------
@@ -29,13 +22,10 @@ document
 
 });
 
-// ---------- Fondo animado ----------
+// ---------- Fondo ----------
 
-const canvas =
-document.getElementById("background");
-
-const ctx =
-canvas.getContext("2d");
+const canvas=document.getElementById("background");
+const ctx=canvas.getContext("2d");
 
 function resize(){
 
@@ -50,20 +40,20 @@ window.addEventListener("resize",resize);
 
 let stars=[];
 
-for(let i=0;i<120;i++){
+for(let i=0;i<140;i++){
 
     stars.push({
 
         x:Math.random()*canvas.width,
         y:Math.random()*canvas.height,
         r:Math.random()*2,
-        s:.2+Math.random()
+        s:0.2+Math.random()*0.8
 
     });
 
 }
 
-function drawBackground(){
+function animateBackground(){
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
@@ -71,15 +61,9 @@ function drawBackground(){
 
         ctx.beginPath();
 
-        ctx.arc(
-            star.x,
-            star.y,
-            star.r,
-            0,
-            Math.PI*2
-        );
+        ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
 
-        ctx.fillStyle="rgba(255,255,255,.8)";
+        ctx.fillStyle="rgba(255,255,255,.85)";
 
         ctx.fill();
 
@@ -94,55 +78,52 @@ function drawBackground(){
 
     });
 
-    requestAnimationFrame(drawBackground);
+    requestAnimationFrame(animateBackground);
 
 }
 
-drawBackground();
-// =========================
-// NIVEL 1 - MATRIZ 4x4
-// =========================
+animateBackground();
 
-// Orden de las casillas (0-15)
-// Tarjeta:
+
+// =====================================
+// NIVEL 1
+// =====================================
+
+const grid=document.getElementById("grid");
+
+// Orden secreto:
 //
 //  9   2  14   7
 // 12  16   5  10
 //  1   8  15   3
 // 11   4  13   6
-//
-// Hay que pulsar 1→16.
 
-const grid = document.getElementById("grid");
-
-const sequence = [
-    8,  //1
-    1,  //2
-    11, //3
-    13, //4
-    6,  //5
-    15, //6
-    3,  //7
-    9,  //8
-    0,  //9
-    7,  //10
-    12, //11
-    4,  //12
-    14, //13
-    2,  //14
-    10, //15
-    5   //16
+const sequence=[
+8,
+1,
+11,
+13,
+6,
+15,
+3,
+9,
+0,
+7,
+12,
+4,
+14,
+2,
+10,
+5
 ];
 
-let progress = 0;
+let progress=0;
 
 for(let i=0;i<16;i++){
 
     const square=document.createElement("div");
 
     square.className="square";
-
-    square.dataset.id=i;
 
     square.addEventListener("click",()=>{
 
@@ -151,7 +132,9 @@ for(let i=0;i<16;i++){
             square.classList.add("correct");
 
             if(navigator.vibrate){
+
                 navigator.vibrate(35);
+
             }
 
             progress++;
@@ -180,12 +163,6 @@ for(let i=0;i<16;i++){
 
             });
 
-            if(navigator.vibrate){
-
-                navigator.vibrate([120,80,120]);
-
-            }
-
             setTimeout(()=>{
 
                 document
@@ -203,140 +180,108 @@ for(let i=0;i<16;i++){
     });
 
     grid.appendChild(square);
+
 }
-// =========================
+// =====================================
 // NIVEL 2
-// =========================
+// =====================================
 
 const answer = document.getElementById("answer");
 const checkBtn = document.getElementById("checkBtn");
 
-checkBtn.addEventListener("click", () => {
+checkBtn.addEventListener("click",()=>{
 
     const text = answer.value.trim().toUpperCase();
 
-    if (text === "PUTASO") {
+    if(text==="PUTASO"){
 
-        checkBtn.textContent = "✓ Correcto";
+        checkBtn.textContent="✓ Correcto";
 
-        checkBtn.style.background =
-        "linear-gradient(135deg,#72ffb8,#4cd6ff)";
-
-        if (navigator.vibrate) {
+        if(navigator.vibrate){
             navigator.vibrate(120);
         }
 
-        setTimeout(() => {
+        setTimeout(()=>{
 
             showPage("level3");
 
-        }, 900);
+        },900);
 
-    } else {
+    }else{
 
-        answer.value = "";
+        answer.value="";
 
-        answer.placeholder = "No es esa...";
+        answer.placeholder="No es esa...";
 
-        answer.style.borderColor = "#ff5b8f";
-
-        if (navigator.vibrate) {
+        if(navigator.vibrate){
             navigator.vibrate([80,60,80]);
         }
 
-        setTimeout(() => {
-
-            answer.placeholder = "Escribe la respuesta";
-            answer.style.borderColor =
-            "rgba(255,255,255,.2)";
-
-        },1000);
-
     }
 
 });
-// =========================
+
+// =====================================
 // NIVEL 3
-// =========================
+// =====================================
 
-const hearts = document.getElementById("hearts");
+const hearts=document.getElementById("hearts");
 
-// Elegimos un corazón ganador
-const winner = Math.floor(Math.random() * 25);
+const winner=Math.floor(Math.random()*25);
 
 for(let i=0;i<25;i++){
 
-    const heart = document.createElement("div");
+    const heart=document.createElement("div");
 
-    heart.className = "heart";
+    heart.className="heart";
 
-    heart.textContent = "❤";
+    heart.textContent="❤
+        // =====================================
+// FINAL
+// =====================================
 
-    // El correcto late ligeramente
-    if(i===winner){
+const videoBtn = document.getElementById("videoBtn");
 
-        heart.animate(
+videoBtn.addEventListener("click",()=>{
 
-            [
-                {transform:"scale(1)"},
-                {transform:"scale(1.15)"},
-                {transform:"scale(1)"}
-            ],
+    alert("Aquí añadiremos el vídeo ❤️");
 
-            {
-                duration:1000,
-                iterations:Infinity
-            }
+});
 
-        );
+// =====================================
+// EFECTO DE ENTRADA
+// =====================================
 
+document.body.animate(
+
+[
+    {
+        opacity:0
+    },
+    {
+        opacity:1
     }
+],
 
-    heart.addEventListener("click",()=>{
+{
+    duration:800,
+    fill:"forwards"
+}
 
-        if(i===winner){
+);
 
-            heart.style.color="#ff5f9f";
-            heart.style.transform="scale(1.8)";
+// =====================================
+// GUARDAR PROGRESO
+// =====================================
 
-            if(navigator.vibrate){
-                navigator.vibrate([100,50,200]);
-            }
+function saveProgress(page){
 
-            setTimeout(()=>{
-
-                showPage("final");
-
-            },1200);
-
-        }else{
-
-            heart.textContent="💔";
-
-            heart.style.opacity=".35";
-
-            heart.style.pointerEvents="none";
-
-            if(navigator.vibrate){
-                navigator.vibrate(40);
-            }
-
-        }
-
-    });
-
-    hearts.appendChild(heart);
+    localStorage.setItem("cristina_progress",page);
 
 }
 
-// =========================
-// BOTÓN FINAL
-// =========================
+const originalShowPage = showPage;
 
-document
-.getElementById("videoBtn")
-.addEventListener("click",()=>{
+showPage = function(id){
 
-    alert("Aquí añadiremos tu vídeo ❤️");
-
-});
+    originalShowPage(id);
