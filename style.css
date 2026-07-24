@@ -1,6 +1,6 @@
-/* =========================
+/* ===================================
    RESET
-========================= */
+=================================== */
 
 *{
     margin:0;
@@ -9,24 +9,28 @@
 }
 
 html,body{
+
     width:100%;
     height:100%;
-    overflow:hidden;
-    font-family:'Poppins',sans-serif;
-}
 
-/* =========================
-   FONDO
-========================= */
+    font-family:'Poppins',sans-serif;
+
+}
 
 body{
 
+    overflow:hidden;
+
     background:
-    radial-gradient(circle at top,#1b1f3a 0%,#0b1020 45%,#05070d 100%);
+    radial-gradient(circle at top,#2d1b44,#101624 55%,#05070d);
 
     color:white;
 
 }
+
+/* ===================================
+   FONDO
+=================================== */
 
 #background{
 
@@ -34,26 +38,30 @@ body{
 
     inset:0;
 
-    z-index:-2;
+    z-index:-1;
 
 }
 
-/* =========================
-   TARJETA CENTRAL
-========================= */
+/* ===================================
+   CONTENEDOR
+=================================== */
 
 .glass{
 
-    width:92%;
+    width:100%;
     max-width:430px;
+
+    height:100vh;
 
     margin:auto;
 
-    min-height:100vh;
-
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
+    padding:20px;
 
 }
 
@@ -63,22 +71,19 @@ body{
 
     width:100%;
 
-    padding:35px 25px;
+    padding:32px 24px;
 
-    text-align:center;
+    border-radius:26px;
 
     background:rgba(255,255,255,.08);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:blur(20px);
 
     border:1px solid rgba(255,255,255,.15);
 
-    border-radius:28px;
+    text-align:center;
 
-    box-shadow:
-
-    0 0 35px rgba(255,105,180,.12),
-    0 0 25px rgba(0,200,255,.15);
+    animation:fade .45s;
 
 }
 
@@ -86,218 +91,10 @@ body{
 
     display:block;
 
-    animation:fade .6s;
-
 }
 
 @keyframes fade{
 
-from{
+    from{
 
-opacity:0;
-transform:translateY(20px);
-
-}
-
-to{
-
-opacity:1;
-transform:none;
-
-}
-
-}
-
-/* =========================
-   TEXTOS
-========================= */
-
-h1{
-
-    font-family:'Orbitron',sans-serif;
-
-    color:#ffffff;
-
-    font-size:2.2rem;
-
-    margin-bottom:15px;
-
-}
-
-h2{
-
-    color:#ffd4ea;
-
-    margin-bottom:20px;
-
-}
-
-.subtitle{
-
-    color:#8ed8ff;
-
-    margin-bottom:20px;
-
-}
-
-p{
-
-    color:#dddddd;
-
-    line-height:1.7;
-
-    margin:12px 0;
-
-}
-
-/* =========================
-   BOTONES
-========================= */
-
-button{
-
-    width:100%;
-
-    padding:16px;
-
-    margin-top:28px;
-
-    border:none;
-
-    border-radius:16px;
-
-    cursor:pointer;
-
-    font-size:1rem;
-
-    font-weight:600;
-
-    color:white;
-
-    background:
-
-    linear-gradient(
-    135deg,
-    #6ecbff,
-    #ff6ea8
-    );
-
-    transition:.3s;
-
-}
-
-button:hover{
-
-    transform:scale(1.04);
-
-}
-
-/* =========================
-   INPUT
-========================= */
-
-input{
-
-    width:100%;
-
-    margin-top:20px;
-
-    padding:15px;
-
-    border-radius:14px;
-
-    border:1px solid rgba(255,255,255,.2);
-
-    background:rgba(255,255,255,.08);
-
-    color:white;
-
-    text-align:center;
-
-    outline:none;
-
-}
-
-/* =========================
-   CUADRÍCULA
-========================= */
-
-#grid{
-
-    margin-top:30px;
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:10px;
-
-}
-
-.square{
-
-    aspect-ratio:1;
-
-    border-radius:12px;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    transition:.25s;
-
-    cursor:pointer;
-
-}
-
-.square:hover{
-
-    transform:scale(1.05);
-
-}
-
-.square.correct{
-
-    background:#7be7ff;
-
-    box-shadow:0 0 20px #7be7ff;
-
-}
-
-.square.wrong{
-
-    background:#ff6e95;
-
-}
-
-/* =========================
-   CORAZONES
-========================= */
-
-#hearts{
-
-    margin-top:30px;
-
-    display:grid;
-
-    grid-template-columns:repeat(5,1fr);
-
-    gap:15px;
-
-}
-
-.heart{
-
-    font-size:34px;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-}
-
-.heart:hover{
-
-    transform:scale(1.2);
-
-}
+       
