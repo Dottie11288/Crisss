@@ -1,257 +1,315 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+// =========================
+// PARA CRISTINA ❤️
+// Parte 1
+// =========================
 
-body{
+// ---------- Pantallas ----------
 
-font-family:'Inter',sans-serif;
-background:#04060d;
-color:white;
-overflow:hidden;
+const pages = document.querySelectorAll(".page");
 
-}
+function showPage(id){
 
-#bg{
+    pages.forEach(page=>{
 
-position:fixed;
-inset:0;
-z-index:-1;
+        page.classList.remove("active");
+
+    });
+
+    document.getElementById(id).classList.add("active");
 
 }
 
-#app{
+// ---------- Botón comenzar ----------
 
-width:100%;
-max-width:430px;
-height:100vh;
-margin:auto;
+document
+.getElementById("startBtn")
+.addEventListener("click",()=>{
 
-display:flex;
-align-items:center;
-justify-content:center;
+    showPage("level1");
 
-padding:20px;
+});
 
-}
+// ---------- Fondo animado ----------
 
-.page{
+const canvas =
+document.getElementById("background");
 
-display:none;
+const ctx =
+canvas.getContext("2d");
 
-width:100%;
+function resize(){
 
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.12);
-
-border-radius:24px;
-
-padding:28px;
-
-text-align:center;
-
-box-shadow:
-
-0 0 40px rgba(0,220,255,.18);
-
-animation:fade .5s;
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
 
 }
 
-.page.active{
+resize();
 
-display:block;
+window.addEventListener("resize",resize);
 
-}
+let stars=[];
 
-@keyframes fade{
+for(let i=0;i<120;i++){
 
-from{
+    stars.push({
 
-opacity:0;
-transform:translateY(30px);
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        r:Math.random()*2,
+        s:.2+Math.random()
 
-}
-
-to{
-
-opacity:1;
-transform:none;
+    });
 
 }
 
-}
+function drawBackground(){
 
-h1{
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 
-font-family:'Orbitron',sans-serif;
+    stars.forEach(star=>{
 
-font-size:2rem;
+        ctx.beginPath();
 
-margin:18px 0;
+        ctx.arc(
+            star.x,
+            star.y,
+            star.r,
+            0,
+            Math.PI*2
+        );
 
-color:#73ddff;
+        ctx.fillStyle="rgba(255,255,255,.8)";
 
-text-shadow:
+        ctx.fill();
 
-0 0 15px #00cfff;
+        star.y+=star.s;
 
-}
+        if(star.y>canvas.height){
 
-h2{
+            star.y=0;
+            star.x=Math.random()*canvas.width;
 
-font-family:'Orbitron',sans-serif;
+        }
 
-margin-bottom:18px;
+    });
 
-color:#69dbff;
-
-}
-
-h4{
-
-letter-spacing:4px;
-
-font-size:.8rem;
-
-color:#73ddff;
-
-margin-bottom:12px;
+    requestAnimationFrame(drawBackground);
 
 }
 
-p{
+drawBackground();
+  // =========================
+// NIVEL 1 - MATRIZ 4x4
+// =========================
 
-margin:12px 0;
+// Orden de las casillas (0-15)
+// Tarjeta:
+//
+//  9   2  14   7
+// 12  16   5  10
+//  1   8  15   3
+// 11   4  13   6
+//
+// Hay que pulsar 1→16.
 
-color:#d9d9d9;
+const grid = document.getElementById("grid");
 
-line-height:1.5;
+const sequence = [
+    8,  //1
+    1,  //2
+    11, //3
+    13, //4
+    6,  //5
+    15, //6
+    3,  //7
+    9,  //8
+    0,  //9
+    7,  //10
+    12, //11
+    4,  //12
+    14, //13
+    2,  //14
+    10, //15
+    5   //16
+];
+
+let progress = 0;
+
+for(let i=0;i<16;i++){
+
+    const square=document.createElement("div");
+
+    square.className="square";
+
+    square.dataset.id=i;
+
+    square.addEventListener("click",()=>{
+
+        if(i===sequence[progress]){
+
+            square.classList.add("correct");
+
+            if(navigator.vibrate){
+                navigator.vibrate(35);
+            }
+
+            progress++;
+
+            if(progress===16){
+
+                setTimeout(()=>{
+
+                    showPage("level2");
+
+                },700);
+
+            }
+
+        }else{
+
+            progress=0;
+
+            document
+            .querySelectorAll(".square")
+            .forEach(s=>{
+
+                s.classList.remove("correct");
+
+                s.classList
+              // =========================
+// NIVEL 2
+// =========================
+
+const answer = document.getElementById("answer");
+const checkBtn = document.getElementById("checkBtn");
+
+checkBtn.addEventListener("click", () => {
+
+    const text = answer.value.trim().toUpperCase();
+
+    if (text === "PUTASO") {
+
+        checkBtn.textContent = "✓ Correcto";
+
+        checkBtn.style.background =
+        "linear-gradient(135deg,#72ffb8,#4cd6ff)";
+
+        if (navigator.vibrate) {
+            navigator.vibrate(120);
+        }
+
+        setTimeout(() => {
+
+            showPage("level3");
+
+        }, 900);
+
+    } else {
+
+        answer.value = "";
+
+        answer.placeholder = "No es esa...";
+
+        answer.style.borderColor = "#ff5b8f";
+
+        if (navigator.vibrate) {
+            navigator.vibrate([80,60,80]);
+        }
+
+        setTimeout(() => {
+
+            answer.placeholder = "Escribe la respuesta";
+            answer.style.borderColor =
+            "rgba(255,255,255,.2)";
+
+        },1000);
+
+    }
+
+});
+              // =========================
+// NIVEL 3
+// =========================
+
+const hearts = document.getElementById("hearts");
+
+// Elegimos un corazón ganador
+const winner = Math.floor(Math.random() * 25);
+
+for(let i=0;i<25;i++){
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent = "❤";
+
+    // El correcto late ligeramente
+    if(i===winner){
+
+        heart.animate(
+
+            [
+                {transform:"scale(1)"},
+                {transform:"scale(1.15)"},
+                {transform:"scale(1)"}
+            ],
+
+            {
+                duration:1000,
+                iterations:Infinity
+            }
+
+        );
+
+    }
+
+    heart.addEventListener("click",()=>{
+
+        if(i===winner){
+
+            heart.style.color="#ff5f9f";
+            heart.style.transform="scale(1.8)";
+
+            if(navigator.vibrate){
+                navigator.vibrate([100,50,200]);
+            }
+
+            setTimeout(()=>{
+
+                showPage("final");
+
+            },1200);
+
+        }else{
+
+            heart.textContent="💔";
+
+            heart.style.opacity=".35";
+
+            heart.style.pointerEvents="none";
+
+            if(navigator.vibrate){
+                navigator.vibrate(40);
+            }
+
+        }
+
+    });
+
+    hearts.appendChild(heart);
 
 }
 
-.terminal{
+// =========================
+// BOTÓN FINAL
+// =========================
 
-background:#02040b;
+document
+.getElementById("videoBtn")
+.addEventListener("click",()=>{
 
-border:1px solid #143c56;
+    alert("Aquí añadiremos tu vídeo ❤️");
 
-border-radius:14px;
-
-padding:18px;
-
-text-align:left;
-
-font-family:monospace;
-
-color:#72ffd0;
-
-margin:25px 0;
-
-}
-
-button{
-
-margin-top:24px;
-
-width:100%;
-
-padding:16px;
-
-border:none;
-
-border-radius:14px;
-
-background:
-
-linear-gradient(90deg,#00d4ff,#6b5cff);
-
-color:white;
-
-font-weight:bold;
-
-font-size:1rem;
-
-cursor:pointer;
-
-transition:.3s;
-
-box-shadow:
-
-0 0 25px rgba(0,212,255,.25);
-
-}
-
-button:hover{
-
-transform:scale(1.04);
-
-}
-
-input{
-
-width:100%;
-
-padding:16px;
-
-margin-top:18px;
-
-border-radius:12px;
-
-border:1px solid #30516d;
-
-background:#0d1320;
-
-color:white;
-
-text-align:center;
-
-font-size:1rem;
-
-outline:none;
-
-}
-
-#constellation{
-
-width:100%;
-
-margin-top:20px;
-
-border-radius:18px;
-
-background:#08111d;
-
-}
-
-#hearts{
-
-display:grid;
-
-grid-template-columns:repeat(5,1fr);
-
-gap:12px;
-
-margin-top:25px;
-
-}
-
-.heart{
-
-font-size:34px;
-
-cursor:pointer;
-
-transition:.25s;
-
-}
-
-.heart:hover{
-
-transform:scale(1.2);
-
-}
+});
