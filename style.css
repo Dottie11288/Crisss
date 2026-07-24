@@ -216,3 +216,11 @@ button:hover{
 .square:hover{
     background:rgba(255,255,255,.18);
 }
+.square.correct{
+    background:#74e8ff;
+    box-shadow:0 0 20px #74e8ff;
+}
+
+.square.wrong{
+    background:#ff6d97;
+}
