@@ -155,7 +155,7 @@ function drawConstellation(){
 
 drawConstellation();
 
-canvas.addEventListener("click",(e)=>{
+canvas.addEventListener("pointerdown",(e)=>{
 
     const rect=canvas.getBoundingClientRect();
 
