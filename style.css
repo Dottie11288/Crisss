@@ -1,315 +1,303 @@
-// =========================
-// PARA CRISTINA ❤️
-// Parte 1
-// =========================
+/* =========================
+   RESET
+========================= */
 
-// ---------- Pantallas ----------
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-const pages = document.querySelectorAll(".page");
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+}
 
-function showPage(id){
+/* =========================
+   FONDO
+========================= */
 
-    pages.forEach(page=>{
+body{
 
-        page.classList.remove("active");
+    background:
+    radial-gradient(circle at top,#1b1f3a 0%,#0b1020 45%,#05070d 100%);
 
-    });
-
-    document.getElementById(id).classList.add("active");
+    color:white;
 
 }
 
-// ---------- Botón comenzar ----------
+#background{
 
-document
-.getElementById("startBtn")
-.addEventListener("click",()=>{
+    position:fixed;
 
-    showPage("level1");
+    inset:0;
 
-});
-
-// ---------- Fondo animado ----------
-
-const canvas =
-document.getElementById("background");
-
-const ctx =
-canvas.getContext("2d");
-
-function resize(){
-
-    canvas.width=window.innerWidth;
-    canvas.height=window.innerHeight;
+    z-index:-2;
 
 }
 
-resize();
+/* =========================
+   TARJETA CENTRAL
+========================= */
 
-window.addEventListener("resize",resize);
+.glass{
 
-let stars=[];
+    width:92%;
+    max-width:430px;
 
-for(let i=0;i<120;i++){
+    margin:auto;
 
-    stars.push({
+    min-height:100vh;
 
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        r:Math.random()*2,
-        s:.2+Math.random()
-
-    });
-
-}
-
-function drawBackground(){
-
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    stars.forEach(star=>{
-
-        ctx.beginPath();
-
-        ctx.arc(
-            star.x,
-            star.y,
-            star.r,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fillStyle="rgba(255,255,255,.8)";
-
-        ctx.fill();
-
-        star.y+=star.s;
-
-        if(star.y>canvas.height){
-
-            star.y=0;
-            star.x=Math.random()*canvas.width;
-
-        }
-
-    });
-
-    requestAnimationFrame(drawBackground);
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
 }
 
-drawBackground();
-  // =========================
-// NIVEL 1 - MATRIZ 4x4
-// =========================
+.page{
 
-// Orden de las casillas (0-15)
-// Tarjeta:
-//
-//  9   2  14   7
-// 12  16   5  10
-//  1   8  15   3
-// 11   4  13   6
-//
-// Hay que pulsar 1→16.
+    display:none;
 
-const grid = document.getElementById("grid");
+    width:100%;
 
-const sequence = [
-    8,  //1
-    1,  //2
-    11, //3
-    13, //4
-    6,  //5
-    15, //6
-    3,  //7
-    9,  //8
-    0,  //9
-    7,  //10
-    12, //11
-    4,  //12
-    14, //13
-    2,  //14
-    10, //15
-    5   //16
-];
+    padding:35px 25px;
 
-let progress = 0;
+    text-align:center;
 
-for(let i=0;i<16;i++){
+    background:rgba(255,255,255,.08);
 
-    const square=document.createElement("div");
+    backdrop-filter:blur(18px);
 
-    square.className="square";
+    border:1px solid rgba(255,255,255,.15);
 
-    square.dataset.id=i;
+    border-radius:28px;
 
-    square.addEventListener("click",()=>{
+    box-shadow:
 
-        if(i===sequence[progress]){
-
-            square.classList.add("correct");
-
-            if(navigator.vibrate){
-                navigator.vibrate(35);
-            }
-
-            progress++;
-
-            if(progress===16){
-
-                setTimeout(()=>{
-
-                    showPage("level2");
-
-                },700);
-
-            }
-
-        }else{
-
-            progress=0;
-
-            document
-            .querySelectorAll(".square")
-            .forEach(s=>{
-
-                s.classList.remove("correct");
-
-                s.classList
-              // =========================
-// NIVEL 2
-// =========================
-
-const answer = document.getElementById("answer");
-const checkBtn = document.getElementById("checkBtn");
-
-checkBtn.addEventListener("click", () => {
-
-    const text = answer.value.trim().toUpperCase();
-
-    if (text === "PUTASO") {
-
-        checkBtn.textContent = "✓ Correcto";
-
-        checkBtn.style.background =
-        "linear-gradient(135deg,#72ffb8,#4cd6ff)";
-
-        if (navigator.vibrate) {
-            navigator.vibrate(120);
-        }
-
-        setTimeout(() => {
-
-            showPage("level3");
-
-        }, 900);
-
-    } else {
-
-        answer.value = "";
-
-        answer.placeholder = "No es esa...";
-
-        answer.style.borderColor = "#ff5b8f";
-
-        if (navigator.vibrate) {
-            navigator.vibrate([80,60,80]);
-        }
-
-        setTimeout(() => {
-
-            answer.placeholder = "Escribe la respuesta";
-            answer.style.borderColor =
-            "rgba(255,255,255,.2)";
-
-        },1000);
-
-    }
-
-});
-              // =========================
-// NIVEL 3
-// =========================
-
-const hearts = document.getElementById("hearts");
-
-// Elegimos un corazón ganador
-const winner = Math.floor(Math.random() * 25);
-
-for(let i=0;i<25;i++){
-
-    const heart = document.createElement("div");
-
-    heart.className = "heart";
-
-    heart.textContent = "❤";
-
-    // El correcto late ligeramente
-    if(i===winner){
-
-        heart.animate(
-
-            [
-                {transform:"scale(1)"},
-                {transform:"scale(1.15)"},
-                {transform:"scale(1)"}
-            ],
-
-            {
-                duration:1000,
-                iterations:Infinity
-            }
-
-        );
-
-    }
-
-    heart.addEventListener("click",()=>{
-
-        if(i===winner){
-
-            heart.style.color="#ff5f9f";
-            heart.style.transform="scale(1.8)";
-
-            if(navigator.vibrate){
-                navigator.vibrate([100,50,200]);
-            }
-
-            setTimeout(()=>{
-
-                showPage("final");
-
-            },1200);
-
-        }else{
-
-            heart.textContent="💔";
-
-            heart.style.opacity=".35";
-
-            heart.style.pointerEvents="none";
-
-            if(navigator.vibrate){
-                navigator.vibrate(40);
-            }
-
-        }
-
-    });
-
-    hearts.appendChild(heart);
+    0 0 35px rgba(255,105,180,.12),
+    0 0 25px rgba(0,200,255,.15);
 
 }
 
-// =========================
-// BOTÓN FINAL
-// =========================
+.page.active{
 
-document
-.getElementById("videoBtn")
-.addEventListener("click",()=>{
+    display:block;
 
-    alert("Aquí añadiremos tu vídeo ❤️");
+    animation:fade .6s;
 
-});
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+transform:none;
+
+}
+
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+h1{
+
+    font-family:'Orbitron',sans-serif;
+
+    color:#ffffff;
+
+    font-size:2.2rem;
+
+    margin-bottom:15px;
+
+}
+
+h2{
+
+    color:#ffd4ea;
+
+    margin-bottom:20px;
+
+}
+
+.subtitle{
+
+    color:#8ed8ff;
+
+    margin-bottom:20px;
+
+}
+
+p{
+
+    color:#dddddd;
+
+    line-height:1.7;
+
+    margin:12px 0;
+
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+button{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-top:28px;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    color:white;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #6ecbff,
+    #ff6ea8
+    );
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:scale(1.04);
+
+}
+
+/* =========================
+   INPUT
+========================= */
+
+input{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    text-align:center;
+
+    outline:none;
+
+}
+
+/* =========================
+   CUADRÍCULA
+========================= */
+
+#grid{
+
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:10px;
+
+}
+
+.square{
+
+    aspect-ratio:1;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    transition:.25s;
+
+    cursor:pointer;
+
+}
+
+.square:hover{
+
+    transform:scale(1.05);
+
+}
+
+.square.correct{
+
+    background:#7be7ff;
+
+    box-shadow:0 0 20px #7be7ff;
+
+}
+
+.square.wrong{
+
+    background:#ff6e95;
+
+}
+
+/* =========================
+   CORAZONES
+========================= */
+
+#hearts{
+
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:15px;
+
+}
+
+.heart{
+
+    font-size:34px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.heart:hover{
+
+    transform:scale(1.2);
+
+}
