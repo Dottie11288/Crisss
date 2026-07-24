@@ -3,193 +3,58 @@
 // Parte 1
 // =========================
 
-const pages = document.querySelectorAll(".page");
-
-function openPage(id){
-
-    pages.forEach(page=>page.classList.remove("active"));
-
-    document.getElementById(id).classList.add("active");
-
-}
-
-// ---------- Inicio ----------
-
-document
-.getElementById("start")
-.onclick=()=>{
-
-    openPage("level1");
-
-};
-
-// ---------- Fondo ----------
-
-const bg=document.getElementById("bg");
-
-const ctx=bg.getContext("2d");
-
-function resize(){
-
-    bg.width=window.innerWidth;
-
-    bg.height=window.innerHeight;
-
-}
-
-resize();
-
-window.onresize=resize;
-
-let stars=[];
-
-for(let i=0;i<120;i++){
-
-    stars.push({
-
-        x:Math.random()*bg.width,
-
-        y:Math.random()*bg.height,
-
-        r:Math.random()*2,
-
-        s:0.2+Math.random()
-
-    });
-
-}
-
-function animate(){
-
-    ctx.clearRect(0,0,bg.width,bg.height);
-
-    ctx.fillStyle="#66d9ff";
-
-    stars.forEach(star=>{
-
-        ctx.beginPath();
-
-        ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
-
-        ctx.fill();
-
-        star.y+=star.s;
-
-        if(star.y>bg.height){
-
-            star.y=0;
-
-            star.x=Math.random()*bg.width;
-
-        }
-
-    });
-
-    requestAnimationFrame(animate);
-
-}
-
-animate();
 // =========================
-// CONSTELACIÓN
+// NIVEL 1 - CUADRÍCULA 4x4
 // =========================
 
-const canvas = document.getElementById("constellation");
-const c = canvas.getContext("2d");
+const grid = document.getElementById("grid");
 
-const points = [
-    {x:40,y:60},
-    {x:90,y:120},
-    {x:170,y:80},
-    {x:260,y:150},
-    {x:300,y:240},
-    {x:230,y:330},
-    {x:140,y:360},
-    {x:70,y:290},
-    {x:110,y:210},
-    {x:200,y:220}
+const numbers = [
+    1, 12, 5, 9,
+    15, 3, 14, 7,
+    10, 16, 2, 13,
+    6, 8, 11, 4
 ];
 
-let currentPoint = 0;
+let nextNumber = 1;
 
-function drawConstellation(){
+numbers.forEach(num => {
 
-    c.clearRect(0,0,canvas.width,canvas.height);
+    const box = document.createElement("div");
 
-    // Líneas ya completadas
-    c.strokeStyle="#4fdcff";
-    c.lineWidth=3;
+    box.classList.add("box");
 
-    c.beginPath();
+    box.textContent = num;
 
-    for(let i=0;i<currentPoint;i++){
+    box.addEventListener("pointerdown", () => {
 
-        if(i===0){
+        if(num === nextNumber){
 
-            c.moveTo(points[i].x,points[i].y);
+            box.classList.add("correct");
+            nextNumber++;
+
+            if(nextNumber === 17){
+
+                setTimeout(()=>{
+
+                    openPage("level2");
+
+                },700);
+
+            }
 
         }else{
 
-            c.lineTo(points[i].x,points[i].y);
+            nextNumber = 1;
+
+            document.querySelectorAll(".box")
+            .forEach(b => b.classList.remove("correct"));
 
         }
-
-    }
-
-    c.stroke();
-
-    // Puntos
-    points.forEach((p,index)=>{
-
-        c.beginPath();
-
-        c.arc(p.x,p.y,8,0,Math.PI*2);
-
-        c.fillStyle=index<currentPoint ? "#ff4da6" : "#66d9ff";
-
-        c.fill();
 
     });
 
-}
-
-drawConstellation();
-
-canvas.addEventListener("pointerdown",(e)=>{
-
-    const rect=canvas.getBoundingClientRect();
-
-    const x=e.clientX-rect.left;
-
-    const y=e.clientY-rect.top;
-
-    const p=points[currentPoint];
-
-    const d=Math.hypot(x-p.x,y-p.y);
-
-    if(d<18){
-
-        currentPoint++;
-
-        drawConstellation();
-
-        if(currentPoint===points.length){
-
-            setTimeout(()=>{
-
-                openPage("level2");
-
-            },700);
-
-        }
-
-    }else{
-
-        currentPoint=0;
-
-        drawConstellation();
-
-    }
+    grid.appendChild(box);
 
 });
 // =========================
