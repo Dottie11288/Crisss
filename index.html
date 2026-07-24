@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PROJECT AURORA</title>
+<title>Para Cristina ❤️</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -17,45 +19,47 @@
 
 <body>
 
-<canvas id="bg"></canvas>
+<canvas id="background"></canvas>
 
-<div id="app">
+<div class="glass">
 
-<section id="welcome" class="page active">
+<section id="intro" class="page active">
 
-<h4>SISTEMA SEGURO</h4>
+<h1>Para Cristina ❤️</h1>
 
-<h1>PROJECT AURORA</h1>
+<p class="subtitle">
+He preparado un pequeño reto para ti.
+</p>
 
-<div class="terminal">
+<p>
+Solo tendrás que superar tres pruebas.
+</p>
 
-<p>> Inicializando...</p>
-<p>> NFC detectado.</p>
-<p>> Acceso concedido.</p>
-
-</div>
-
-<button id="start">
-
-INICIAR
-
+<button id="startBtn">
+Comenzar
 </button>
 
 </section>
 
 <section id="level1" class="page">
 
-<h2>NIVEL 1</h2>
+<h2>Primera prueba</h2>
 
-<p>Encuentra el orden correcto.</p>
+<p>
+La respuesta está en la tarjeta.
+</p>
 
-<div id="grid"></div>
+<div id="grid">
+
+<!-- script.js creará los 16 cuadrados -->
+
+</div>
 
 </section>
 
 <section id="level2" class="page">
 
-<h2>NIVEL 2</h2>
+<h2>Segunda prueba</h2>
 
 <p>Te doy uno.</p>
 
@@ -63,11 +67,14 @@ INICIAR
 
 <p>¿Qué quieres dos?</p>
 
-<input id="answer">
+<input
+id="answer"
+type="text"
+placeholder="Escribe la respuesta">
 
-<button id="check">
+<button id="checkBtn">
 
-COMPROBAR
+Comprobar
 
 </button>
 
@@ -75,23 +82,45 @@ COMPROBAR
 
 <section id="level3" class="page">
 
-<h2>NIVEL 3</h2>
+<h2>Última prueba</h2>
 
-<p>Encuentra mi corazón.</p>
+<p>
 
-<div id="hearts"></div>
+Entre todos los corazones...
+
+</p>
+
+<p>
+
+Encuentra el mío.
+
+</p>
+
+<div id="hearts">
+
+</div>
 
 </section>
 
 <section id="final" class="page">
 
-<h2>ARCHIVO DESBLOQUEADO</h2>
+<h1>❤️</h1>
 
-<h1>Cristina</h1>
+<h2>
 
-<button id="video">
+Lo has conseguido.
 
-▶ VER LA SORPRESA
+</h2>
+
+<p>
+
+Gracias por llegar hasta aquí.
+
+</p>
+
+<button id="videoBtn">
+
+Ver la sorpresa
 
 </button>
 
@@ -102,4 +131,5 @@ COMPROBAR
 <script src="script.js"></script>
 
 </body>
+
 </html>
