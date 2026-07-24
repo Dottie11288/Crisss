@@ -166,3 +166,9 @@ for(let i=0;i<25;i++){
     hearts.appendChild(heart);
 
 }
+document.getElementById("videoBtn").addEventListener("click", () => {
+    window.open(
+        "https://photos.app.goo.gl/QjBsuxXiLF4yVdps7",
+        "_blank"
+    );
+});
