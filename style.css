@@ -1,6 +1,6 @@
-/* ===================================
+/* =========================
    RESET
-=================================== */
+========================= */
 
 *{
     margin:0;
@@ -21,16 +21,16 @@ body{
 
     overflow:hidden;
 
-    background:
-    radial-gradient(circle at top,#2d1b44,#101624 55%,#05070d);
-
     color:white;
+
+    background:
+    radial-gradient(circle at top,#231437,#0f1626 50%,#05070d);
 
 }
 
-/* ===================================
+/* =========================
    FONDO
-=================================== */
+========================= */
 
 #background{
 
@@ -42,11 +42,11 @@ body{
 
 }
 
-/* ===================================
+/* =========================
    CONTENEDOR
-=================================== */
+========================= */
 
-.glass{
+.container{
 
     width:100%;
     max-width:430px;
@@ -56,22 +56,22 @@ body{
     margin:auto;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     padding:20px;
 
 }
 
-.page{
+.screen{
 
     display:none;
 
     width:100%;
 
-    padding:32px 24px;
+    padding:34px 26px;
+
+    text-align:center;
 
     border-radius:26px;
 
@@ -81,20 +81,116 @@ body{
 
     border:1px solid rgba(255,255,255,.15);
 
-    text-align:center;
-
-    animation:fade .45s;
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.35);
 
 }
 
-.page.active{
+.screen.active{
 
     display:block;
+
+    animation:fade .45s ease;
 
 }
 
 @keyframes fade{
 
-    from{
+from{
 
-       
+opacity:0;
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+transform:none;
+
+}
+
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+h1{
+
+    font-family:'Orbitron',sans-serif;
+
+    font-size:2.1rem;
+
+    margin-bottom:20px;
+
+}
+
+h2{
+
+    color:#ffd4e8;
+
+    margin-bottom:18px;
+
+}
+
+p{
+
+    margin:12px 0;
+
+    line-height:1.7;
+
+    color:#ececec;
+
+}
+
+.small{
+
+    font-size:.82rem;
+
+    opacity:.7;
+
+    margin-top:22px;
+
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+button{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    background:
+    linear-gradient(135deg,#73dfff,#ff6da9);
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* =========================
+   INPUT
+=========================
