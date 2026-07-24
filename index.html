@@ -2,19 +2,17 @@
 <html lang="es">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Cristina ❤️</title>
 
-<title>Para Cristina ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -23,113 +21,104 @@
 
 <div class="glass">
 
-<section id="intro" class="page active">
+    <!-- INTRO -->
 
-<h1>Para Cristina ❤️</h1>
+    <section id="intro" class="page active">
 
-<p class="subtitle">
-He preparado un pequeño reto para ti.
-</p>
+        <h1>Para Cristina ❤️</h1>
 
-<p>
-Solo tendrás que superar tres pruebas.
-</p>
+        <p class="subtitle">
+            He preparado algo solo para ti.
+        </p>
 
-<button id="startBtn">
-Comenzar
-</button>
+        <p>
+            Supera las tres pruebas y descubre la sorpresa final.
+        </p>
 
-</section>
+        <button id="startBtn">
+            Comenzar
+        </button>
 
-<section id="level1" class="page">
+    </section>
 
-<h2>Primera prueba</h2>
+    <!-- NIVEL 1 -->
 
-<p>
-La respuesta está en la tarjeta.
-</p>
+    <section id="level1" class="page">
 
-<div id="grid">
+        <h2>Primera prueba</h2>
 
-<!-- script.js creará los 16 cuadrados -->
+        <p>
+            La secuencia está oculta en la tarjeta.
+        </p>
 
-</div>
+        <div id="grid"></div>
 
-</section>
+    </section>
 
-<section id="level2" class="page">
+    <!-- NIVEL 2 -->
 
-<h2>Segunda prueba</h2>
+    <section id="level2" class="page">
 
-<p>Te doy uno.</p>
+        <h2>Segunda prueba</h2>
 
-<p>¿Qué?</p>
+        <p>Te doy uno.</p>
 
-<p>¿Qué quieres dos?</p>
+        <p>¿Qué?</p>
 
-<input
-id="answer"
-type="text"
-placeholder="Escribe la respuesta">
+        <p>¿Qué quieres dos?</p>
 
-<button id="checkBtn">
+        <input
+            id="answer"
+            type="text"
+            placeholder="Escribe la respuesta">
 
-Comprobar
+        <button id="checkBtn">
+            Comprobar
+        </button>
 
-</button>
+    </section>
 
-</section>
+    <!-- NIVEL 3 -->
 
-<section id="level3" class="page">
+    <section id="level3" class="page">
 
-<h2>Última prueba</h2>
+        <h2>Última prueba</h2>
 
-<p>
+        <p>
+            Entre todos los corazones...
+        </p>
 
-Entre todos los corazones...
+        <p>
+            Encuentra el mío.
+        </p>
 
-</p>
+        <div id="hearts"></div>
 
-<p>
+    </section>
 
-Encuentra el mío.
+    <!-- FINAL -->
 
-</p>
+    <section id="final" class="page">
 
-<div id="hearts">
+        <h1>❤️</h1>
 
-</div>
+        <h2>
+            Lo has conseguido.
+        </h2>
 
-</section>
+        <p>
+            Gracias por llegar hasta aquí.
+        </p>
 
-<section id="final" class="page">
+        <button id="videoBtn">
+            Ver la sorpresa
+        </button>
 
-<h1>❤️</h1>
-
-<h2>
-
-Lo has conseguido.
-
-</h2>
-
-<p>
-
-Gracias por llegar hasta aquí.
-
-</p>
-
-<button id="videoBtn">
-
-Ver la sorpresa
-
-</button>
-
-</section>
+    </section>
 
 </div>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
