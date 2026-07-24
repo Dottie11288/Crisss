@@ -4,12 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PROJECT AURORA</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Proyecto NFC</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -17,88 +12,82 @@
 
 <body>
 
-
 <div id="app">
 
-<section id="welcome" class="page active">
+    <!-- INTRO -->
+    <section id="intro" class="screen">
+        <h1>PROYECTO L-01</h1>
+        <p>NFC detectada ✔</p>
+        <p>Iniciando experiencia...</p>
 
-<h4>SISTEMA SEGURO</h4>
+        <button onclick="startGame()">
+            Comenzar
+        </button>
+    </section>
 
-<h1>PROJECT AURORA</h1>
 
-<div class="terminal">
+    <!-- NIVEL 1 -->
+    <section id="level1" class="screen hidden">
 
-<p>> Inicializando...</p>
-<p>> NFC detectado.</p>
-<p>> Acceso concedido.</p>
+        <h2>NIVEL 1</h2>
 
-</div>
+        <p>
+            Encuentra el orden correcto
+        </p>
 
-<button id="start">
+        <div id="grid"></div>
 
-INICIAR
+    </section>
 
-</button>
 
-</section>
+    <!-- NIVEL 2 -->
+    <section id="level2" class="screen hidden">
 
-<section id="level1" class="page">
+        <h2>NIVEL 2</h2>
 
-<h2>NIVEL 1</h2>
+        <p>
+            Segundo desafío
+        </p>
 
-<p>Todo comienza uniendo los puntos.</p>
+        <div id="puzzle2"></div>
 
-<div id="level1">
-    <h2>Encuentra el orden</h2>
-    <div id="grid"></div>
-</div>
-</section>
+    </section>
 
-<section id="level2" class="page">
 
-<h2>NIVEL 2</h2>
+    <!-- NIVEL 3 -->
+    <section id="level3" class="screen hidden">
 
-<p>Te doy uno.</p>
+        <h2>NIVEL 3</h2>
 
-<p>¿Qué?</p>
+        <p>
+            Última prueba
+        </p>
 
-<p>¿Qué quieres dos?</p>
+        <div id="puzzle3"></div>
 
-<input id="answer">
+    </section>
 
-<button id="check">
 
-COMPROBAR
+    <!-- FINAL -->
+    <section id="final" class="screen hidden">
 
-</button>
+        <h1>❤️</h1>
 
-</section>
+        <h2>Lo conseguiste</h2>
 
-<section id="level3" class="page">
+        <p>
+            Has completado el proyecto.
+        </p>
 
-<h2>NIVEL 3</h2>
+        <p>
+            Siempre tú.
+        </p>
 
-<p>Encuentra mi corazón.</p>
+    </section>
 
-<div id="hearts"></div>
-
-</section>
-
-<section id="final" class="page">
-
-<h2>ARCHIVO DESBLOQUEADO</h2>
-
-<h1>Cristina</h1>
-
-<button id="video">
-
-▶ VER LA SORPRESA
-
-</button>
-
-</section>
 
 </div>
+
 
 <script src="script.js"></script>
 
