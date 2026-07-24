@@ -4,7 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Proyecto NFC</title>
+<title>PROJECT AURORA</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -12,60 +17,90 @@
 
 <body>
 
+<canvas id="bg"></canvas>
+
 <div id="app">
 
-    <!-- INTRO -->
-    <div id="intro" class="screen">
-        <h1>PROYECTO NFC</h1>
-        <p>NFC detectada ✔</p>
-        <button onclick="openPage('level1')">
-            Iniciar
-        </button>
-    </div>
+
+<section id="welcome" class="page active">
+
+<h4>SISTEMA SEGURO</h4>
+
+<h1>PROJECT AURORA</h1>
+
+<div class="terminal">
+
+<p>> Inicializando...</p>
+<p>> NFC detectado.</p>
+<p>> Acceso concedido.</p>
+
+</div>
+
+<button id="start">
+INICIAR
+</button>
+
+</section>
 
 
-    <!-- NIVEL 1 -->
-    <div id="level1" class="screen hidden">
 
-        <h2>Nivel 1</h2>
+<section id="level1" class="page">
 
-        <p>Pulsa los números en orden</p>
+<h2>NIVEL 1</h2>
 
-        <div id="grid"></div>
+<p>Encuentra el orden correcto.</p>
 
-    </div>
+<div id="grid">
 
+</div>
 
-    <!-- NIVEL 2 -->
-    <div id="level2" class="screen hidden">
-
-        <h2>Nivel 2</h2>
-
-        <div id="puzzle2"></div>
-
-    </div>
+</section>
 
 
-    <!-- NIVEL 3 -->
-    <div id="level3" class="screen hidden">
 
-        <h2>Nivel 3</h2>
+<section id="level2" class="page">
 
-        <div id="puzzle3"></div>
+<h2>NIVEL 2</h2>
 
-    </div>
+<p>Te doy uno.</p>
+
+<p>¿Qué?</p>
+
+<p>¿Qué quieres dos?</p>
+
+<input id="answer">
+
+<button id="check">
+COMPROBAR
+</button>
+
+</section>
 
 
-    <!-- FINAL -->
-    <div id="final" class="screen hidden">
 
-        <h1>❤️</h1>
+<section id="level3" class="page">
 
-        <h2>Lo conseguiste</h2>
+<h2>NIVEL 3</h2>
 
-        <p>Fin del proyecto.</p>
+<p>Encuentra mi corazón.</p>
 
-    </div>
+<div id="hearts"></div>
+
+</section>
+
+
+
+<section id="final" class="page">
+
+<h2>ARCHIVO DESBLOQUEADO</h2>
+
+<h1>Cristina</h1>
+
+<button id="video">
+▶ VER LA SORPRESA
+</button>
+
+</section>
 
 
 </div>
