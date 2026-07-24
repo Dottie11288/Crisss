@@ -114,3 +114,55 @@ checkBtn.addEventListener("click", () => {
     }
 
 });
+// ===============================
+// NIVEL 3
+// ===============================
+
+const hearts = document.getElementById("hearts");
+
+const correctHeart = 12;
+
+for(let i=0;i<25;i++){
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent = "❤️";
+
+    heart.addEventListener("click",()=>{
+
+        if(i===correctHeart){
+
+            heart.style.transform="scale(1.5)";
+            heart.style.filter="drop-shadow(0 0 12px #ff4d8d)";
+
+            if(navigator.vibrate){
+                navigator.vibrate([100,60,200]);
+            }
+
+            setTimeout(()=>{
+
+                showScreen("final");
+
+            },800);
+
+        }else{
+
+            heart.textContent="💔";
+
+            heart.style.opacity=".45";
+
+            heart.style.pointerEvents="none";
+
+            if(navigator.vibrate){
+                navigator.vibrate(40);
+            }
+
+        }
+
+    });
+
+    hearts.appendChild(heart);
+
+}
