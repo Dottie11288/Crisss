@@ -2,124 +2,155 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Para Cristina ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Para Cristina ❤️</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <canvas id="background"></canvas>
 
-<div class="glass">
+<div class="container">
 
-    <!-- INTRO -->
+<!-- INTRO -->
 
-    <section id="intro" class="page active">
+<section id="intro" class="screen active">
 
-        <h1>Para Cristina ❤️</h1>
+<h1>Para Cristina ❤️</h1>
 
-        <p class="subtitle">
-            He preparado algo solo para ti.
-        </p>
+<p>
 
-        <p>
-            Supera las tres pruebas y descubre la sorpresa final.
-        </p>
+He preparado algo para ti.
 
-        <button id="startBtn">
-            Comenzar
-        </button>
+</p>
 
-    </section>
+<p>
 
-    <!-- NIVEL 1 -->
+No es un regalo cualquiera.
 
-    <section id="level1" class="page">
+</p>
 
-        <h2>Primera prueba</h2>
+<button id="startBtn">
 
-        <p>
-            La secuencia está oculta en la tarjeta.
-        </p>
+Comenzar
 
-        <div id="grid">
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-</div>
+</button>
 
-    </section>
+</section>
 
-    <!-- NIVEL 2 -->
+<!-- NIVEL 1 -->
 
-    <section id="level2" class="page">
+<section id="level1" class="screen">
 
-        <h2>Segunda prueba</h2>
+<h2>EL PRIMER PASO</h2>
 
-        <p>Te doy uno.</p>
+<p>
 
-        <p>¿Qué?</p>
+Hay caminos que cualquiera puede seguir.
 
-        <p>¿Qué quieres dos?</p>
+</p>
 
-        <input
-            id="answer"
-            type="text"
-            placeholder="Escribe la respuesta">
+<p>
 
-        <button id="checkBtn">
-            Comprobar
-        </button>
+Y otros que solo llevan a una persona.
 
-    </section>
+</p>
 
-    <!-- NIVEL 3 -->
+<div id="grid"></div>
 
-    <section id="level3" class="page">
+</section>
 
-        <h2>Última prueba</h2>
+<!-- NIVEL 2 -->
 
-        <p>
-            Entre todos los corazones...
-        </p>
+<section id="level2" class="screen">
 
-        <p>
-            Encuentra el mío.
-        </p>
+<h2>UN PEQUEÑO ACERTIJO</h2>
 
-        <div id="hearts"></div>
+<p>Te doy uno.</p>
 
-    </section>
+<p>¿Qué?</p>
 
-    <!-- FINAL -->
+<p>¿Qué quieres dos?</p>
 
-    <section id="final" class="page">
+<input
+id="answer"
+type="text"
+placeholder="Escribe la respuesta">
 
-        <h1>❤️</h1>
+<button id="checkBtn">
 
-        <h2>
-            Lo has conseguido.
-        </h2>
+Comprobar
 
-        <p>
-            Gracias por llegar hasta aquí.
-        </p>
+</button>
 
-        <button id="videoBtn">
-            Ver la sorpresa
-        </button>
+</section>
 
-    </section>
+<!-- NIVEL 3 -->
+
+<section id="level3" class="screen">
+
+<h2>ÚLTIMO PASO</h2>
+
+<p>
+
+Entre todos los corazones...
+
+</p>
+
+<p>
+
+Encuentra el mío.
+
+</p>
+
+<div id="hearts"></div>
+
+</section>
+
+<!-- FINAL -->
+
+<section id="final" class="screen">
+
+<h1>❤️</h1>
+
+<p>
+
+Gracias por llegar hasta aquí.
+
+</p>
+
+<p>
+
+Ahora quiero enseñarte una última cosa.
+
+</p>
+
+<button id="videoBtn">
+
+Ver la sorpresa
+
+</button>
+
+<p class="small">
+
+Guarda esta tarjeta.
+
+Siempre será la llave para volver aquí.
+
+</p>
+
+</section>
 
 </div>
 
