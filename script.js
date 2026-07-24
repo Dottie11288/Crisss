@@ -90,3 +90,27 @@ for (let i = 0; i < 16; i++) {
     grid.appendChild(square);
 
 }
+// ===============================
+// NIVEL 2
+// ===============================
+
+const answer = document.getElementById("answer");
+const checkBtn = document.getElementById("checkBtn");
+
+checkBtn.addEventListener("click", () => {
+
+    const text = answer.value.trim().toUpperCase();
+
+    if (text === "PUTASO") {
+
+        showScreen("level3");
+
+    } else {
+
+        alert("No es esa...");
+
+        answer.value = "";
+
+    }
+
+});
