@@ -1,172 +1,169 @@
-// =========================
-// PROJECT AURORA
-// Parte 1
-// =========================
+/* =========================
+   RESET
+========================= */
 
-// =========================
-// NIVEL 1 - CUADRÍCULA 4x4
-// =========================
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-const grid = document.getElementById("grid");
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+}
 
-const numbers = [
-    1, 12, 5, 9,
-    15, 3, 14, 7,
-    10, 16, 2, 13,
-    6, 8, 11, 4
-];
+/* =========================
+   FONDO
+========================= */
 
-let nextNumber = 1;
+body{
 
-numbers.forEach(num => {
+    background:
+    radial-gradient(circle at top,#1b1f3a 0%,#0b1020 45%,#05070d 100%);
 
-    const box = document.createElement("div");
-
-    box.classList.add("box");
-
-    box.textContent = num;
-
-    box.addEventListener("pointerdown", () => {
-
-        if(num === nextNumber){
-
-            box.classList.add("correct");
-            nextNumber++;
-
-            if(nextNumber === 17){
-
-                setTimeout(()=>{
-
-                    openPage("level2");
-
-                },700);
-
-            }
-
-        }else{
-
-            nextNumber = 1;
-
-            document.querySelectorAll(".box")
-            .forEach(b => b.classList.remove("correct"));
-
-        }
-
-    });
-
-    grid.appendChild(box);
-
-});
-// =========================
-// NIVEL 2
-// =========================
-
-const checkButton = document.getElementById("check");
-const answerInput = document.getElementById("answer");
-
-checkButton.addEventListener("click", () => {
-
-    const answer = answerInput.value.trim().toUpperCase();
-
-    if(answer === "PUTASO"){
-
-        checkButton.textContent = "✓ CORRECTO";
-        checkButton.style.background = "#00c853";
-
-        if(navigator.vibrate){
-            navigator.vibrate(120);
-        }
-
-        setTimeout(() => {
-
-            openPage("level3");
-
-        },1000);
-
-    }else{
-
-        answerInput.value = "";
-
-        answerInput.placeholder = "Respuesta incorrecta";
-
-        answerInput.style.border = "2px solid #ff3b3b";
-
-        if(navigator.vibrate){
-            navigator.vibrate([80,60,80]);
-        }
-
-        setTimeout(()=>{
-
-            answerInput.style.border = "";
-
-            answerInput.placeholder = "Escribe la respuesta...";
-
-        },1000);
-
-    }
-
-});
-// =========================
-// NIVEL 3
-// =========================
-
-const heartsContainer = document.getElementById("hearts");
-
-// Limpiamos por si acaso
-heartsContainer.innerHTML = "";
-
-// Elegimos un corazón ganador
-const winningHeart = Math.floor(Math.random() * 25);
-
-for (let i = 0; i < 25; i++) {
-
-    const heart = document.createElement("div");
-
-    heart.className = "heart";
-    heart.textContent = "❤";
-
-    // El corazón correcto late ligeramente
-    if (i === winningHeart) {
-
-        heart.animate(
-            [
-                { transform: "scale(1)" },
-                { transform: "scale(1.12)" },
-                { transform: "scale(1)" }
-            ],
-            {
-                duration: 1200,
-                iterations: Infinity
-            }
-        );
-
-    }
-
-    heart.addEventListener("click", () => {
-
-        if (i === winningHeart) {
-
-            heart.style.color = "#ff4da6";
-            heart.style.transform = "scale(1.8)";
-
-            if (navigator.vibrate) {
-                navigator.vibrate([100, 50, 200]);
-            }
-
-            setTimeout(() => {
-                openPage("final");
-            }, 1200);
-
-        } else {
-
-            heart.textContent = "💔";
-            heart.style.opacity = "0.35";
-            heart.style.pointerEvents = "none";
-
-        }
-
-    });
-
-    heartsContainer.appendChild(heart);
+    color:white;
 
 }
+
+#background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-2;
+
+}
+
+/* =========================
+   TARJETA CENTRAL
+========================= */
+
+.glass{
+
+    width:92%;
+    max-width:430px;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.page{
+
+    display:none;
+
+    width:100%;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:28px;
+
+    box-shadow:
+
+    0 0 35px rgba(255,105,180,.12),
+    0 0 25px rgba(0,200,255,.15);
+
+}
+
+.page.active{
+
+    display:block;
+
+    animation:fade .6s;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+transform:none;
+
+}
+
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+h1{
+
+    font-family:'Orbitron',sans-serif;
+
+    color:#ffffff;
+
+    font-size:2.2rem;
+
+    margin-bottom:15px;
+
+}
+
+h2{
+
+    color:#ffd4ea;
+
+    margin-bottom:20px;
+
+}
+
+.subtitle{
+
+    color:#8ed8ff;
+
+    margin-bottom:20px;
+
+}
+
+p{
+
+    color:#dddddd;
+
+    line-height:1.7;
+
+    margin:12px 0;
+
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+button{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-top:28px;
+
+    border:none;
+
+    border-radius:16px;
+
+   
