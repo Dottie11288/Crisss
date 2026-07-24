@@ -167,8 +167,5 @@ for(let i=0;i<25;i++){
 
 }
 document.getElementById("videoBtn").addEventListener("click", () => {
-    window.open(
-        "https://photos.app.goo.gl/QjBsuxXiLF4yVdps7",
-        "_blank"
-    );
+    window.location.href = "https://photos.app.goo.gl/QjBsuxXiLF4yVdps7";
 });
